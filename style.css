@@ -1,0 +1,70 @@
+/* Made starting from mobile view then to tablet then to desktop */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    background-color: lightgoldenrodyellow;
+    padding: 10px 0;
+}
+
+.header h1 {
+    text-align: center;
+    font-size: 100px;
+}
+
+.about-me h2 {
+    text-align: center;
+    font-size: 40px;
+    /* Use margin because if background color is changed
+    there will still be white space on the top and bottom.
+    But if padding is used even the added padding 
+    color will change. */
+    margin: 20px 0;
+}
+
+.about-me #myPicContainer {
+    /* text-align for centering image only works on block elements
+    if element is not a block element use 'display:block;' */
+    text-align: center;
+    margin: 10px 0;
+}
+
+.about-me #myPic {
+    width: 30%;
+    border-radius: 45%;
+}
+
+.about-me .about-content {
+    margin: 40px;
+}
+
+/* code for tablet view */
+@media only screen and (min-width: 768px){
+    .header h1 {
+        font-size: 70px;
+    }
+
+    .about-me #myPic {
+        width: 20%;     
+    }
+
+    .about-content {
+        background-color: lightgreen;
+        font-size: 20px;
+    }
+}
+
+/* code for desktop view */
+@media only screen and (min-width: 1000px){
+    .header h1 {
+        font-size: 70px;
+    }
+
+    .about-me #myPic {
+        width: 15%;
+    }
+}
+
