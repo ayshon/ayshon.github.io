@@ -1,107 +1,576 @@
-/* Made starting from mobile view then to tablet then to desktop */
+/* Made starting from desktop view then to tablet then to mobile */
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
-#content{
-    display: none;
+/* ---- NAVBAR SECTION ---- */
+.navbar {
+    height: 76px;
+    width: 100%;
+    display: flex;
+    /* for horizontal centering of nav elements */
+    justify-content: space-between;
+    /* For vertical centering of nav elements */
+    align-items: center;
+    /* keeps the nav bar at the top of the screen even after scrolling */
+    position: fixed; 
+    top: 0;
+    z-index: 999;
+    font-size: 20px;
+    background-color: white;
 }
 
-.header {
-    background-color: lightgoldenrodyellow;
-    padding: 10px 0;
+.home {
+    text-decoration: none;
+    color: #242423;
+    /* color: #EF233C; */
+    /* transition: all 0.3s ease; */
+    margin: 0 0 0 13px;
 }
 
-.header h1 {
-    text-align: center;
-    font-size: 50px;
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 13px 0 0;
 }
 
-.about-me h2 {
-    text-align: center;
-    font-size: 35px;
-    /* Use margin because if background color is changed
-    there will still be white space on the top and bottom.
-    But if padding is used even the added padding 
-    color will change. */
-    margin: 2.5% 0;
+.navbar__links {
+    /* removes underline from links */
+    text-decoration: none;
+    color: #242423;
+    margin: 0 0 0 5rem;
+    /* transition that applies to all css properties over 0.3s and uses the ease speed curve */
+    transition: all 0.3s ease;
 }
 
-.about-content{
-    margin: 2.5% 0;
+.highlight {
+    color:#EF233C;
 }
 
-#myPic {
-    /* for making element a block element */
-    display: block;
-    /* margin:auto for centering only works on block elements */
-    margin: auto;
-    width: 150px;
-    border-radius: 45%;
-}
-
-#about-text {
-    font-size: 18px;
-    margin: 2.5% 10%;
-}
-
-#about-text ul {
-    margin: 2.5% 10%;
+.active {
+    border-bottom: 4px solid rgb(239, 35, 60);
 }
 
 /* code for tablet view */
-@media only screen and (min-width: 768px){
+@media only screen and (max-width: 768px){
     /* need to prepend an ancestor in order to have all properties applied */
     
-    .header {
-        background-color: aquamarine;
-    }
-    
-    .about-me h2 {
-        font-size: 45px;
+    .home {
+        font-size: 1.6rem;
     }
 
-    #myPicContainer #myPic {
-        width: 175px;
+    /* this is all for the drop nav menu when in tablet/mobile mode */
+    .navbar__menu {
+        /* causes the navbar to be just one column */
+        display: grid;
+        width: 100%;
+        padding: 0;
+        /* need to set position to absolute so top property can be used */
+        position: absolute;
+        top: -1000px;
+        z-index: -1;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .navbar__menu.display {
+        background-color: white;
+        /* top: 100% = top: 0 */
+        top: 100%;
+        opacity: 1;
+        transition: top 0.5s ease;
+        z-index: 99;
+        /* viewport height so that navbar height is wrt the screen and not parent element */
+        font-size: 1.6rem;
+    }
+
+    .navbar__toggle {
+        padding: 0 13px 0 0;
+        cursor: pointer;
+    }
+
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding: 2rem 0 2rem 0;
+        width: 100%;
+        margin: 0;
+        /* makes elements act like a an html table */
+        display: table;
+    }
+
+    /* the 3 black lines to toggle navbar */
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: #242423;
+        /* display block so that the bars can be seen */
+        display: block;
+    }
+
+    /* makes middle bar dissapear */
+    .mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    /* rotates the top bar */
+    .mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    /* rotates the bottom bar */
+    .mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
 
-/* code for desktop view */
-@media only screen and (min-width: 1024px){
-    .header {
-        background-color: cornflowerblue;
-    }
+/* ---- WELCOME SECTION ---- */
 
-    .header h1 {
-        font-size: 55px;
-    }
+.welcome {
+    position: relative;
+    text-align: center;
+    color: white;
+}
 
-    .about-me .about-content {
-        /* allows for divs to be placed side by side*/
-        display: flex;
-    }
-    .about-me #myPicContainer {
-        /* text-align for centering image only works on block elements
-        if element is not a block element use 'display:block;' */
-        /* text-align: center; */
-        width: 40%;
-        /* margin: auto (for centering) still works even after display: flex */
-        margin: auto;
-        margin-left: 7.5%;
-    }  
-    
-    #myPicContainer #myPic {
-        width: 200px;
-    }
+.keyboard__container {
+    position: relative;
+    height: 100%;
+}
 
-    .about-me #about-text {
-        /* width: 60%; */
-        margin: 0;
-        margin-left: 10%;
-        margin-right: 10%;
-        /* flex-grow: 1; */
-    }
+.keyboard {
+    width: 100%;
+    /* needed so that the container div does not have extra height */
+    display: block;
+}
+
+.grey__overlay {
+    background-color: rgba(65, 65, 65, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.welcome__msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    font-size: 10vw;
+}
+
+.welcome__text {
+    color: #EF233C;
+}
+
+.welcome__bar {
+    border: 4px solid #EF233C;
+    margin: auto;
+    width: 16vw;
+}
+
+.scroll_msg {
+    position: absolute;
+    bottom: 5%;
+    /* for horizontal centering */
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1vw;
+}
+
+.scroll_arrow {
+    position: absolute;
+    bottom: 1.5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 2vw;
+}
+
+/* ---- ABOUT ME SECTION ---- */
+.about_me {
+    display: flex;
+    padding: 14rem 5rem 15rem 5rem;
+    width: 100%;
+    font-size: 18px;
+}
+
+.my_pic_container {
+    width: 35%;
+    margin: 0 1rem 0 0;
+}
+
+.my_pic {
+    width: 90%;
+}
+
+.picture {
+    width: 100%;
+    display: block;
+    /* margin: 0 auto; */
+    border-style: solid;
+    margin-bottom: 1rem;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 0.25rem 0;
+}
+
+.my_description {
+    width: 65%;
+}
+
+.about_header_container {
+    position: relative;
+}
+
+.about_header {
+    color:black;
+    font-weight: bold;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.about_header_back {
+    position: absolute;
+    font-weight: bold;
+    top: 1.5px;
+    left: 2.5px;
+    color: #EF233C;
+    font-size: 3rem;
+    z-index: -1;
+    width: 100%;
+}
+
+.about_bar {
+    border: 1px solid #EF233C;
+    width: 125px;
+    margin: 0 0 10px 0;
+}
+
+.about_text .main_text {
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+.about_text .lower_text_container {
+    display: flex;
+}
+
+.list_container {
+    margin: 0 1rem 0 1.1rem;
+    width: 48%;
+}
+
+.list_title {
+    margin: 0 0 0.2rem -1.1rem;
+    font-weight: 600;
+    text-decoration: underline;
+
+}
+
+.about_list li {
+    margin: 0 0 0.2rem 0;
+}
+
+.about_text .lower_text_box {
+    width: 52%;
+}
+
+/* ---- PROJECTS SECTION ---- */
+
+.projects {
+    display: flex;
+    padding: 6rem 3rem 7rem 3rem;
+    width: 100%;
+    font-size: 18px;
+}
+
+.projects_context {
+    width: 45%;
+}
+
+.projects_header_container {
+    position: relative;
+}
+
+.projects_header {
+    color:black;
+    font-weight: bold;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.projects_header_back {
+    position: absolute;
+    font-weight: bold;
+    top: 1.5px;
+    left: 2.5px;
+    color: #EF233C;
+    font-size: 3rem;
+    z-index: -1;
+    width: 100%;
+}
+
+.projects_bar {
+    border: 1px solid #EF233C;
+    width: 86px;
+    margin: 1rem 0 0.8rem 0;
+}
+
+.projects_text {
+    width: 92%;
+}
+
+.projects_showcase {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.projects_column.column_1{
+    padding-right: 2vw;
+}
+
+.projects_column.column_2{
+    padding-left: 2vw;
+}
+
+.projects_column .top_picture {
+    margin-bottom: 4vw;
+}
+
+.project_img {
+    width: 100%;
+}
+
+.projects_column {
+    flex: 50%;
+}
+
+.projects_column img {
+    /* this gets rid of extra div height that appears because of img */
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.project_image_container {
+    position: relative;
+}
+
+.dimmer {
+    background-color: rgba(239, 35, 60, 0.70);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.dimmer1 {
+    display:none;
+    height: 85%;
+}
+
+.dimmer2 {
+    display:none;
+    height: 85%;
+}
+
+.dimmer3 {
+    display:none;
+    height: 100%;
+}
+
+.dimmer4 {
+    display:none;
+    height: 100%;
+}
+
+/* The Modal (background) */
+.project_modal {
+    display: none;
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.918); /* Black w/ opacity */
+}
+
+.modal_content {
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    align-self: flex-end;
+    margin-right: 0.6rem;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project_title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.description_bar {
+    border: 1px solid #FFFFFF;
+    width: 86px;
+    margin: 1rem 0 0.8rem 0;
+}
+
+.modal_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project_description {
+    margin: 0 4rem;
+    text-align: justify;
+}
+
+.project_link {
+    margin: 1rem 0;
+    font-size: 24px;
+    font-weight: 600;
+    color:#FFFFFF;
+    text-decoration: underline;
+}
+
+/* CONTACT PAGE */
+ 
+.contact_page {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.keyboard_contact {
+    width: 100%;
+    height: 606px;
+    object-fit: cover;
+    /* needed so that the container div does not have extra height */
+    display: block;
+}
+
+.grey__overlay {
+    background-color: rgba(65, 65, 65, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contact__msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.projects_header {
+    color:black;
+    font-weight: bold;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.projects_header_back {
+    position: absolute;
+    font-weight: bold;
+    top: 1.5px;
+    left: 2.5px;
+    color: #EF233C;
+    font-size: 3rem;
+    z-index: -1;
+    width: 100%;
+}
+
+
+.contact__text_container {
+    position: relative;
+}
+
+.contact__text {
+    font-size: 6vw;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.contact__text_back {
+    position: absolute;
+    font-weight: bold;
+    top: 1.5px;
+    left: 2.5px;
+    color: #EF233C;
+    font-size: 6vw;
+    z-index: -1;
+    width: 100%;
+}
+
+.contact__bar {
+    border: 1px solid #EF233C;
+    margin: auto;
+    width: 10vw;
+}
+
+.contact__email {
+    margin-top: 1rem;
+    font-size: 2vw;
+}
+
+.scroll_msg_top {
+    position: absolute;
+    top: 4vw;
+    /* for horizontal centering */
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1vw;
+}
+
+.scroll_arrow_top {
+    position: absolute;
+    top: 1vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 2vw;
+}
+
+/* FOOTER SECTION */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.94rem;
+    margin: 0.5rem 1rem;
 }
 

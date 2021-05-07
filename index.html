@@ -5,67 +5,187 @@
 		<title>Shon</title>
 		<meta charset="utf-8"/>
 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="maintenance.css">
+        
         <!-- For mobile device responsiveness -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     </head>
 	<body>
-        <div id = "content">
-            <header class="header">
-                <h1>Shon</h1>
-            </header>
-            <div class = "site-content">
-                <div class = "about-me">
-                    <h2>About Me</h2>
-                    <div class = about-content>
-                        <div id ="myPicContainer"><img id = "myPic" src="Jin-Woo.png" alt=""></div>
-                        <div id = "about-text">
-                            <p>Hey, I’m Sean.</p>
-                            <br>
-                            <p>
-                                Ever since I was young, I enjoyed playing video games and because of that I decided 
-                                to learn about what makes video games run. I then became interested in computers and programming. 
-                                My interest in computers and programming led me to pursue an education in computer engineering at the University of Toronto.
-                            </p>
-                            <br>
-                            <p>At the moment I’m in my third year and taking the following courses:</p>
-                            <ul>
+        <nav class = "navbar">
+            <a href="#welcome_section" class="home nav_link welcome_section">Home</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="#about_me_section" class="navbar__links nav_link about_me_section" id="about-page">About Me</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#projects_section" class="navbar__links nav_link projects_section" id="projects-page">Projects</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#contact_page_section" class="navbar__links nav_link contact_page_section" id="contact-page">Contact Me</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class = "welcome section" id = "welcome_section">
+            <div class="keyboard__container">
+                <img class = "keyboard" src="keyboad.jpg" alt="">
+                <div class = "grey__overlay"></div>
+            </div>
+            <div class = "welcome__msg">
+                <div class = "welcome__text">
+                    Welcome.
+                </div>
+                <div class = "welcome__bar"></div>
+                <div class = "welcome__name">
+                    I'm Sean Llera
+                </div>
+            </div>
+            <div class = "scroll_msg">
+                Scroll to learn more
+            </div>
+            <div class = "scroll_arrow">
+                &#8595;
+            </div>
+        </div>
+
+        <div class="about_me section" id = "about_me_section">
+            <div class="my_pic_container">
+                <div class="my_pic">
+                    <img src="lipbite.jpg" alt="" class="picture">
+                    <div class="title">Computer Engineering Student</div>
+                    <div class="title">at the University of Toronto</div>
+                </div>
+            </div>
+            <div class="my_description">
+                <div class="about_header_container">
+                    <div class="about_header">About Me</div>
+                    <div class="about_header_back">About Me</div>
+                </div>
+                <div class = "about_bar"></div>
+                <div class="about_text">
+                    <p class="main_text">
+                        Ever since I was young, I enjoyed playing video games and because of that I decided to learn programming. My interest in computers and programming led me to pursue a career in software engineering/development. I then decided to take on computer engineering at the University of Toronto. I'm currently completing my 3rd year.   
+                        <br>
+                        <br> 
+                        The list below contains some courses I've completed.
+                    </p>
+
+                    <div class="lower_text_container">
+                        <div class="list_container">
+                            <div class="list_title">
+                                Completed Courses:
+                            </div>
+                            <ul class="about_list">
                                 <li>Applied Fundamentals of Machine Learning</li>
-                                <li>Computer Networks I</li>
                                 <li>Introduction to Databases</li>
-                                <li>Engineering Economic Analysis & Entrepreneurship</li>
+                                <li>Operating Systems</li>
+                                <li>Computer Networks I</li>
+                                <li>Data Structures & Algorithms</li>
                             </ul>
-                            <p>My hobbies include reading manga, watching anime, sleeping, and playing video games.</p>
+                        </div>
+                        <div class="lower_text_box">
+                            Most recently my hobbies include reading manga, watching anime, sleeping, and playing video games.  
+                            However, I have taken up taekwondo and drumming in the past.
+                            <br>
+                            <br>
+                            Something I am currently learning on my own and outside of school is website development.
+                            I am starting by learning HTML, CSS, and JavaScript and I plan on learning React in the future. 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id = "maintenance_container">
-            <div id = "under">
-                <span>u</span>
-                <span>n</span>
-                <span>d</span>
-                <span>e</span>
-                <span>r</span>
+
+        <div class="projects section" id = "projects_section">
+            <div class="projects_context">
+                <div class="projects_header_container">
+                    <div class="projects_header">Projects</div>
+                    <div class="projects_header_back">Projects</div>
+                </div>
+                <div class = "projects_bar"></div>
+                <div class="projects_text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non arcu porta, semper massa eu, feugiat mauris. Fusce rutrum urna nec est euismod euismod. Nulla viverra eu felis eget mollis. Etiam consectetur in tellus in dapibus. Aenean ut fringilla urna. Pellentesque eget orci in eros viverra imperdiet ac sit amet tellus. Nulla nec diam pulvinar, pulvinar orci in, lobortis ligula. In molestie, dolor vel porta rutrum, tortor risus venenatis lectus, sit amet consectetur quam justo a sem. Integer eget eleifend metus. Pellentesque suscipit purus quis nunc tincidunt iaculis. Mauris bibendum dolor sit amet lorem luctus, nec sodales mi sagittis. Nam dictum lectus quis purus dapibus
+                </div>
             </div>
-            <div id = "maintenance">
-                <span>m</span>
-                <span>a</span>
-                <span>i</span>
-                <span>n</span>
-                <span>t</span>
-                <span>e</span>
-                <span>n</span>
-                <span>a</span>
-                <span>n</span>
-                <span>c</span>
-                <span>e</span>
+            <div class="projects_showcase">
+                <div class="projects_column column_1">
+                    <div class="project_image_container">
+                        <img src="lake-louise.jpeg" alt="" class="project_img lake top_picture">
+                        <div class="dimmer dimmer1"></div>
+                    </div>
+                    <div class="project_image_container">
+                        <img src="website.jpg" alt="" class="project_img website">
+                        <div class="dimmer dimmer3"></div>
+                    </div>
+                </div>
+                <div class="projects_column column_2">
+                    <div class="project_image_container">
+                        <img src="maps.jpg" alt="" class="project_img map top_picture">
+                        <div class="dimmer dimmer2"></div>
+                    </div>
+                    <div class="project_image_container">
+                        <img src="space-shooter.jpg" alt="" class="project_img space">
+                        <div class="dimmer dimmer4"></div>
+                    </div>
+                </div>
+                <div class="project_modal">
+                    <div class="modal_content">
+                        <div class="close">&times;</div>
+                        <div class="modal_text">
+                            <div class="project_title">
+                            </div>
+                            <div class="description_bar"></div>
+                            <div class="project_description">
+                            </div>
+                            <a class="project_link" target = "_blank"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- this makes site content dissapear so that maintanence screen can be shown -->
-        <!-- <script src = "maintanence.js"></script> -->
-	</body>
+
+        <div class="contact_page section" id = "contact_page_section">
+            <div class="keyboard__container">
+                <img class = "keyboard_contact" src="keyboad.jpg" alt="">
+                <div class = "grey__overlay"></div>
+            </div>
+            <div class = "contact__msg">
+                <div class="contact__text_container">
+                    <div class = "contact__text">Contact Me</div>
+                    <div class = "contact__text_back">Contact Me</div>
+                </div>
+                
+                <div class = "contact__bar"></div>
+                <div class = "contact__email">
+                    sean.llera@mail.utoronto.ca
+                </div>
+                <div class="social_logos">
+                    <div class="linkedIn_logo"></div>
+                    <div class="reddit_logo"></div>
+                </div>
+            </div>
+            <div class = "scroll_msg_top">
+                Back to top
+            </div>
+            <div class = "scroll_arrow_top">
+                &#8593;
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer_text">
+                Designed by: Raianne Mallari
+            </div>
+            <div class="copyright">
+                Copyright &#169; 2021 | All Rights Reserved
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
 
 </html>
